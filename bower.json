@@ -1,0 +1,16 @@
+{
+  "name": "palangs",
+  "version": "0.0.0",
+  "authors": [
+    "Mats Krüger Svensson <mats@matsemann.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "Snap.svg": "snap.svg#~0.4.1"
+  }
+}
