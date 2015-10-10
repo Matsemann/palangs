@@ -2,15 +2,6 @@
     fill: none;
 }
 
-/*.st0{display:none;}*/
-/*.st1{display:inline;fill:none;stroke:#989898;stroke-width:6.0037;stroke-opacity:0.2;}*/
-/*.st2{fill:#D9D9D8;stroke:#B4B4B4;stroke-width:1.0006;}*/
-/*.st2:hover{fill:#c00;stroke:#B4B4B4;stroke-width:1.0006;}*/
-/*.st3{fill:#FFFFFF;stroke:#B4B4B4;stroke-width:1.0006;}*/
-/*.st4{fill:none;stroke:#FFFFFF;stroke-width:1.0006;}*/
-/*.st5{fill:#676767;}*/
-/*.st6{fill:none;stroke:#0899CD;stroke-width:1.0006;}*/
-
 #area path {
     /*stroke: #f00;*/
     fill: #5f7f8f;
@@ -26,7 +17,7 @@
     stroke-dasharray: 904, 904;
     stroke-dashoffset: 904;
 
-    transition: stroke-dashoffset 2s ease-in-out;
+    transition: stroke-dashoffset 2s ease-in-out, stroke-width 0.5s ease-in-out;
 }
 #path path:hover {
     stroke: #ff900c;

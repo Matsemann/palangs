@@ -11,6 +11,7 @@
   "homepage": "",
   "private": true,
   "dependencies": {
-    "Snap.svg": "snap.svg#~0.4.1"
+    "Snap.svg": "snap.svg#~0.4.1",
+    "svg-pan-zoom": "3.2.3"
   }
 }
