@@ -11,28 +11,28 @@
 
 <object id="map" data="world/world_finished.svg" type="image/svg+xml"></object>
 
+<div id="tooltip">
+    Yo, my tooltip
+</div>
+
 <script>
-    waitUntilEverythingsIsLoaded();
-
-
-    function waitUntilEverythingsIsLoaded() {
-        document.addEventListener("DOMContentLoaded", function () {
-            var svgEl = document.getElementById("map");
-
-            svgEl.addEventListener("load", function () {
-                start(svgEl);
-            });
-        });
-    }
-
+window.onload = function() {
+    start(document.getElementById("map"));
+};
 
     function start(svgEl) {
+        console.log("starting");
         var svg = svgEl.contentDocument;
         var path = svg.querySelector("#path path");
         var cities = svg.querySelectorAll("#cities circle");
+        var tooltip = document.querySelector("#tooltip");
 
         animatePath();
         addCitiesTooltips();
+
+        setTimeout(function() {
+            adjustCitiesToZoom(1);
+        }, 1000);
 
         var panZoom = svgPanZoom(svgEl, {
             maxZoom: 50,
@@ -85,6 +85,7 @@
         }
 
         function animatePath() {
+            console.log(navigator.userAgent);
             setTimeout(function () {
                 path.style["stroke-dashoffset"] = "0";
             }, 50);
@@ -93,8 +94,15 @@
         function addCitiesTooltips() {
             for (var i = 0; i < cities.length; i++) {
                 var city = cities[i];
-                city.addEventListener("mouseover", function() {
-                    console.log("hey");
+                city.addEventListener("mouseover", function(event) {
+                    console.log(event);
+                    tooltip.style.opacity = 1;
+                    tooltip.style.top = event.clientY + "px";
+                    tooltip.style.left = event.clientX + 30 + "px";
+                });
+                city.addEventListener("mouseout", function() {
+                    console.log("bye");
+                    tooltip.style.opacity = 0;
                 });
             }
         }

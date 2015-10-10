@@ -5,6 +5,7 @@
 #area path {
     /*stroke: #f00;*/
     fill: #5f7f8f;
+    transition: fill 0.5s ease-in-out;
 }
 
 #area path:hover {
@@ -17,8 +18,9 @@
     stroke-dasharray: 904, 904;
     stroke-dashoffset: 904;
 
-    transition: stroke-dashoffset 2s ease-in-out, stroke-width 0.5s ease-in-out;
+    transition: stroke-dashoffset 2s ease-in-out, stroke-width 0.5s ease-in-out, fill 0.3s ease-in-out;
 }
+
 #path path:hover {
     stroke: #ff900c;
 }
@@ -28,12 +30,17 @@
 }
 
 /*#shores path {*/
-    /*stroke: #4a7b90;*/
-    /*stroke-width: 2;*/
+/*stroke: #4a7b90;*/
+/*stroke-width: 2;*/
 /*}*/
 
 #cities circle {
     fill: #f00;
+}
+
+#cities circle:hover {
+    fill: #f00;
+
 }
 
 #lakes path {
