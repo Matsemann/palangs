@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Russland på langs</title>
+    <script src="bower_components/Snap.svg/dist/snap.svg-min.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<object id="map" data="world/world_finished.svg" type="image/svg+xml"></object>
+
+<script>
+    waitUntilEverythingsIsLoaded();
+
+
+    function waitUntilEverythingsIsLoaded() {
+        document.addEventListener("DOMContentLoaded", function () {
+            var svg = document.getElementById("map");
+
+            svg.addEventListener("load", function () {
+                setTimeout(function () {
+                    start(svg.contentDocument);
+                }, 0);
+            });
+        });
+    }
+
+
+    function start(svg) {
+        var path = svg.querySelector("#path path");
+        path.style["stroke-dashoffset"] = "0";
+    }
+</script>
+
+</body>
+</html>
