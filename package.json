@@ -7,18 +7,20 @@
     "postinstall": "gulp"
   },
   "dependencies": {
+    "angular": "^1.4.7",
+    "angular-route": "^1.4.7",
     "body-parser": "~1.10.2",
     "debug": "~2.1.1",
     "express": "~4.11.1",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-sourcemaps": "^1.6.0",
     "jade": "~1.9.1",
     "morgan": "~1.5.1",
     "pg": "^4.2.0",
     "serve-favicon": "~2.2.0",
-    "svg-pan-zoom": "3.2.3",
-    "gulp": "^3.9.0",
-    "gulp-clean": "^0.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-sourcemaps": "^1.6.0"
+    "svg-pan-zoom": "3.2.3"
   },
   "devDependencies": {
     "supervisor": "~0.7.1"

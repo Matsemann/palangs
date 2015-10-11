@@ -12,7 +12,9 @@ var toCopy = [
 ];
 
 var vendors = [
-    "node_modules/svg-pan-zoom/dist/svg-pan-zoom.min.js"
+    "node_modules/svg-pan-zoom/dist/svg-pan-zoom.min.js",
+    "node_modules/angular/angular.min.js",
+    "node_modules/angular-route/angular-route.min.js"
 ];
 
 gulp.task('clean', function () {
