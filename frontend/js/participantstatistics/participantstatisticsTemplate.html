@@ -1,0 +1,32 @@
+<h2>Loggført av hver deltaker</h2>
+<div class="scrollable">
+
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th ng-repeat="p in participants">{{p.name}}</th>
+    </tr>
+    <tr>
+        <th>Team</th>
+        <th ng-repeat="p in participants">{{p.teamName}}</th>
+    </tr>
+    <!--<tr>-->
+        <!--<th></th>-->
+        <!--<th ng-repeat="p in participants">{{$index + 1}}. plass</th>-->
+    <!--</tr>-->
+    <tr>
+        <th>Total:</th>
+        <th ng-repeat="p in participants">{{p.totalDistance / 1000}} km</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="day in days">
+        <td>{{day}}</td>
+        <td ng-repeat="p in participants">{{p.days[day]}}</td>
+    </tr>
+    </tbody>
+
+</table>
+
+</div>

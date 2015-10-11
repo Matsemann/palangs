@@ -1,11 +1,11 @@
 angular.module('palangs')
-    .directive('teamstatistics', function (backendService, totalDistance) {
+    .directive('participantstatistics', function (backendService, totalDistance) {
         return {
             scope: {},
-            templateUrl: "teamstatistics/teamstatisticsTemplate.html",
+            templateUrl: "participantstatistics/participantstatisticsTemplate.html",
             controller: function ($scope) {
-                backendService.getTeamStats().then(function (result) {
-                    $scope.teams = result.data.sort(function (a, b) {
+                backendService.getParticipantsStats().then(function (result) {
+                    $scope.participants = result.data.sort(function (a, b) {
                         return b.totalDistance - a.totalDistance;
                     });
                 });

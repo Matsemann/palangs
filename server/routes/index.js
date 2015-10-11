@@ -40,9 +40,10 @@ router.get('/team', function (req, res, next) {
 
 router.get('/distance/participants', function (req, res, next) {
 
-    runQuery('SELECT d.date, d.meters, p.name, p.id as pid ' +
+    runQuery('SELECT d.date, d.meters, p.name, p.id as pid, t.name as tname ' +
         'FROM distancelog d ' +
-        'LEFT JOIN participant p ON d.participantid = p.id', null, success, next);
+        'LEFT JOIN participant p ON d.participantid = p.id ' +
+        'LEFT JOIN team t ON t.id = p.teamid', null, success, next);
 
 
     function success(result) {
@@ -57,6 +58,7 @@ router.get('/distance/participants', function (req, res, next) {
                     id: row.pid,
                     name: row.name,
                     totalDistance: 0,
+                    teamName: row.tname,
                     days: {}
                 };
                 participants.push(participant);

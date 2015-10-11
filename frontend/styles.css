@@ -18,6 +18,11 @@ object {
     transition: opacity 0.2s ease-in-out;
 }
 
+.scrollable {
+    width: 100%;
+    overflow-y: auto;
+}
+
 /*#tooltip:hover {*/
     /*opacity: 1;*/
 /*}*/

@@ -1,0 +1,29 @@
+<h2>Loggført av hvert lag</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th></th>
+        <th ng-repeat="team in teams">{{team.name}}</th>
+    </tr>
+    <!--<tr>-->
+        <!--<th></th>-->
+        <!--<th ng-repeat="team in teams">{{$index + 1}}. plass</th>-->
+    <!--</tr>-->
+    <tr>
+        <th>Total:</th>
+        <th ng-repeat="team in teams">{{team.totalDistance / 1000}} km</th>
+    </tr>
+    <tr>
+        <th>Prosent:</th>
+        <th ng-repeat="team in teams">{{percent(team.totalDistance)}} %</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="day in days">
+        <td>{{day}}</td>
+        <td ng-repeat="team in teams">{{team.days[day]}}</td>
+    </tr>
+    </tbody>
+
+</table>
