@@ -53,6 +53,6 @@ gulp.task('watch', ["clean"], function() {
 
     gulp.watch(src + "/**/*.js", ["js"]);
     gulp.watch(toCopy, ["copy"]);
-    gulp.watch(src + "/world/*2", ["copy-world"]);
+    gulp.watch(src + "/world/*", ["copy-world"]);
 });
 
