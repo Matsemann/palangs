@@ -8,7 +8,7 @@ var connectionString = require(path.join(__dirname, '../', '../', 'config'));
 router.get('/team', function (req, res, next) {
     runQuery('SELECT t.id as tid, t.name as tname, p.id as pid, p.name as pname ' +
         'FROM team t ' +
-        'LEFT JOIN participant p ON t.id = p.teamid', null, success, err);
+        'LEFT JOIN participant p ON t.id = p.teamid', null, success, next);
 
     function success(result) {
         var teams = [];
@@ -36,18 +36,13 @@ router.get('/team', function (req, res, next) {
         res.json(teams);
     }
 
-    function err(error) {
-        console.log(error);
-        return res.status(500).json({ error: "Something went wrong"});
-    }
-
 });
 
 router.get('/distance/participants', function (req, res, next) {
 
     runQuery('SELECT d.date, d.meters, p.name, p.id as pid ' +
         'FROM distancelog d ' +
-        'LEFT JOIN participant p ON d.participantid = p.id', null, success, err);
+        'LEFT JOIN participant p ON d.participantid = p.id', null, success, next);
 
 
     function success(result) {
@@ -69,16 +64,11 @@ router.get('/distance/participants', function (req, res, next) {
 
             participant.totalDistance += row.meters;
 
-            var date = new Date(row.date).toISOString().slice(0,10);
+            var date = new Date(row.date).toISOString().slice(0, 10);
             participant.days[date] = row.meters;
         }
 
         res.json(participants);
-    }
-
-    function err(error) {
-        console.log(error);
-        return res.status(500).json({ error: "Something went wrong"});
     }
 });
 
@@ -88,7 +78,7 @@ router.get('/distance/teams', function (req, res, next) {
         'FROM distancelog d ' +
         'LEFT JOIN participant p ON d.participantid = p.id ' +
         'LEFT JOIN team t ON p.teamid = t.id ' +
-        'GROUP BY t.id, d.date', null, success, err);
+        'GROUP BY t.id, d.date', null, success, next);
 
 
     function success(result) {
@@ -113,17 +103,59 @@ router.get('/distance/teams', function (req, res, next) {
             var totalDistance = parseInt(row.daytotal, 10);
             team.totalDistance += totalDistance;
 
-            var date = new Date(row.date).toISOString().slice(0,10);
+            var date = new Date(row.date).toISOString().slice(0, 10);
             team.days[date] = totalDistance;
         }
 
         res.json(teams);
     }
 
-    function err(error) {
-        console.log(error);
-        return res.status(500).json({ error: "Something went wrong"});
+});
+
+
+router.post('/team', function (req, res, next) {
+    var teamName = req.body.name;
+    runQuery("INSERT INTO team(name) values(($1))", [teamName], success, next);
+
+    function success(result) {
+        console.log("Created team " + teamName);
+        res.json({message: "team created"});
     }
+});
+
+router.post('/team/:id/player', function (req, res, next) {
+    var playerName = req.body.name;
+    var teamId = parseInt(req.params.id, 10);
+
+    runQuery("INSERT INTO participant(teamid, name) values(($1), ($2))", [teamId, playerName], success, next);
+
+    function success(result) {
+        console.log("Added player " + playerName + " to teamid " + teamId);
+        res.json({message: "player created"});
+    }
+});
+
+router.post('/distance/:participantid', function (req, res, next) {
+    var distance = req.body.distance;
+    var date = req.body.date;
+    var participantid = parseInt(req.params.participantid, 10);
+
+    runQuery("SELECT meters FROM distancelog WHERE date = ($1) AND participantid = ($2)", [date, participantid],
+        function (result) {
+            if (result.rows.length > 0) {
+                runQuery("UPDATE distancelog SET meters = ($1) WHERE date = ($2) AND participantid = ($3)",
+                    [distance, date, participantid], success, next);
+            } else {
+                runQuery("INSERT INTO distancelog(meters, date, participantid) VALUES(($1), ($2), ($3))",
+                    [distance, date, participantid], success, next);
+            }
+
+            function success(result) {
+                console.log("Set distance to " + distance + "for p " + participantid + " at " + date);
+                res.json({message: "logged distance"});
+            }
+        }, next);
+
 });
 
 function runQuery(query, values, callback, errCallback) {
@@ -132,7 +164,7 @@ function runQuery(query, values, callback, errCallback) {
             done();
             errCallback(err);
         }
-        client.query(query, values, function(err, result) {
+        client.query(query, values, function (err, result) {
             done();
 
             if (err) {
