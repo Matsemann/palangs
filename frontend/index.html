@@ -16,7 +16,7 @@
 <nav class="top-bar" data-topbar role="navigation">
     <ul class="title-area">
         <li class="name">
-            <h1><a href="#">Russland på langs</a></h1>
+            <h1><a href="#/">Russland på langs</a></h1>
         </li>
         <li class="toggle-topbar menu-icon"><a href="javascript:void(0)"><span>Menu</span></a></li>
     </ul>
@@ -27,7 +27,8 @@
         </ul>
 
         <ul class="left">
-            <li><a href="#/">Lagstatistikk</a></li>
+            <li><a href="#/">Forside</a></li>
+            <li><a href="#/teams">Lagstatistikk</a></li>
             <li><a href="#/participants">Deltakerstatistikk</a></li>
         </ul>
     </section>
@@ -47,10 +48,12 @@
 </div>
 
 <script>
-    $(document).foundation();
-    window.onload = function () {
-        start(document.getElementById("map"));
-    };
+    $(document).ready(function () {
+        $(document).foundation();
+    });
+//    window.onload = function () {
+//        start(document.getElementById("map"));
+//    };
 
 </script>
 

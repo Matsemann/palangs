@@ -138,9 +138,9 @@ router.post('/team/:id/player', function (req, res, next) {
 });
 
 router.post('/distance/:participantid', function (req, res, next) {
-    var distance = req.body.distance;
-    var date = req.body.date;
     var participantid = parseInt(req.params.participantid, 10);
+    var distance = parseInt(req.body.distance, 10);
+    var date = req.body.date;
 
     runQuery("SELECT meters FROM distancelog WHERE date = ($1) AND participantid = ($2)", [date, participantid],
         function (result) {

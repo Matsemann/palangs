@@ -17,7 +17,7 @@
     <!--</tr>-->
     <tr>
         <th>Total:</th>
-        <th ng-repeat="p in participants">{{p.totalDistance / 1000}} km</th>
+        <th ng-repeat="p in participants">{{toKm(p.totalDistance)}} km</th>
     </tr>
     </thead>
     <tbody>

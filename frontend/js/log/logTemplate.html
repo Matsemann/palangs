@@ -1,0 +1,29 @@
+<h2>Loggfør skritt</h2>
+
+<select-participant teams="teams" selected="selected"></select-participant>
+
+
+<div ng-show="selected.participant && selected.date != ''">
+    Legg til eller endre<br>
+    Skriv inn enten i meter eller antall steg
+
+    <div class="row">
+        <div class="small-6 medium-3 column">
+            <label>Distanse i meter
+                <input type="text" ng-model="distanceM" ng-change="updateM()">
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 medium-3 column">
+            <label>Antall skritt
+                <input type="text" ng-model="distanceS" ng-change="updateS()">
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 medium-3 column">
+            <a href="javascript:void(0)" class="button" ng-click="save()">{{saveText}}</a>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,7 @@
 <h2>Loggført av hvert lag</h2>
+<!--<p>-->
+    <!--Dagens tall og den oppdaterte totalen oppdaters kun 13:57 hver dag.-->
+<!--</p>-->
 
 <table>
     <thead>
@@ -12,7 +15,7 @@
     <!--</tr>-->
     <tr>
         <th>Total:</th>
-        <th ng-repeat="team in teams">{{team.totalDistance / 1000}} km</th>
+        <th ng-repeat="team in teams">{{toKm(team.totalDistance)}} km</th>
     </tr>
     <tr>
         <th>Prosent:</th>

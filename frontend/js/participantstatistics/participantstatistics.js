@@ -10,12 +10,10 @@ angular.module('palangs')
                     });
                 });
 
-                $scope.days = backendService.getDays().map(function (day) {
-                    return day.toISOString().slice(0, 10);
-                });
+                $scope.days = backendService.getDays();
 
-                $scope.percent = function(distance) {
-                    return ((distance/1000) / totalDistance * 100).toFixed(2);
+                $scope.toKm = function(distance) {
+                    return (distance/1000).toFixed(2);
                 };
             }
         };
