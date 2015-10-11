@@ -7,7 +7,6 @@
   },
   "dependencies": {
     "body-parser": "~1.10.2",
-    "cookie-parser": "~1.3.3",
     "debug": "~2.1.1",
     "express": "~4.11.1",
     "jade": "~1.9.1",
@@ -17,6 +16,7 @@
     "svg-pan-zoom": "3.2.3"
   },
   "devDependencies": {
+    "gulp": "^3.9.0",
     "supervisor": "~0.7.1"
   }
 }
