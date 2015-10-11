@@ -1,5 +1,5 @@
 angular.module('palangs')
-    .directive('participantstatistics', function (backendService, totalDistance) {
+    .directive('participantstatistics', function (backendService, utilService) {
         return {
             scope: {},
             templateUrl: "participantstatistics/participantstatisticsTemplate.html",
@@ -10,7 +10,7 @@ angular.module('palangs')
                     });
                 });
 
-                $scope.days = backendService.getDays();
+                $scope.days = utilService.getDays();
 
                 $scope.toKm = function(distance) {
                     return (distance/1000).toFixed(2);

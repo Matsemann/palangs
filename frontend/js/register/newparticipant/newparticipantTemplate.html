@@ -1,0 +1,23 @@
+<h3>Ny deltaker</h3>
+
+<div class="row">
+    <div class="small-6 medium-3 column">
+        <label>Velg lag (<a href="javascript:void(0)" ng-click="refresh()">refresh</a>)
+            <select ng-model="team" ng-options="team.name for team in teams"></select>
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-6 medium-3 column">
+        <label>Deltakernavn
+            <input type="text" ng-model="participantName">
+        </label>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-6 medium-3 column">
+        <button class="button" ng-click="save()" ng-disabled="team.id == null">{{saveText}}</button>
+    </div>
+</div>

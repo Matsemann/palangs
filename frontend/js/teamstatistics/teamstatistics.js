@@ -1,5 +1,5 @@
 angular.module('palangs')
-    .directive('teamstatistics', function (backendService, totalDistance) {
+    .directive('teamstatistics', function (backendService, totalDistance, utilService) {
         return {
             scope: {},
             templateUrl: "teamstatistics/teamstatisticsTemplate.html",
@@ -10,7 +10,7 @@ angular.module('palangs')
                     });
                 });
 
-                $scope.days = backendService.getDays();
+                $scope.days = utilService.getDays();
 
                 $scope.percent = function(distance) {
                     return ((distance/1000) / totalDistance * 100).toFixed(2);

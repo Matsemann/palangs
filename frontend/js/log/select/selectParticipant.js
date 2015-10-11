@@ -1,5 +1,5 @@
 angular.module('palangs')
-    .directive('selectParticipant', function (backendService) {
+    .directive('selectParticipant', function (backendService, utilService) {
         return {
             scope: {
                 teams: "=",
@@ -15,7 +15,7 @@ angular.module('palangs')
                 $scope.selected.team = null;
                 $scope.selected.participant = null;
 
-                $scope.days = backendService.getDays();
+                $scope.days = utilService.getDays();
 
                 var days = ["søndag", "mandag", "tirsdag", "onsdag", "torsdag", "fredag", "lørdag"];
                 $scope.readableDay = function (day) {

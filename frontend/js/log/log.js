@@ -53,9 +53,10 @@ angular.module('palangs')
                         date: $scope.selected.date,
                         distance: $scope.distanceM
                     }).then(function() {
+                        $scope.saveText = "Lagret";
                         $timeout(function() {
                             $scope.saveText = "Lagre"
-                        }, 1000);
+                        }, 1500);
                     });
                 }
             }
