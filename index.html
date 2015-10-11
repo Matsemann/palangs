@@ -16,28 +16,28 @@
 </div>
 
 <script>
-window.onload = function() {
-    start(document.getElementById("map"));
-};
+    window.onload = function () {
+        start(document.getElementById("map"));
+    };
 
     function start(svgEl) {
-        console.log("starting");
+        console.log("starting2");
         var svg = svgEl.contentDocument;
         var path = svg.querySelector("#path path");
         var cities = svg.querySelectorAll("#cities circle");
         var tooltip = document.querySelector("#tooltip");
 
-        animatePath();
         addCitiesTooltips();
 
-        setTimeout(function() {
+        setTimeout(function () {
+            animatePath();
             adjustCitiesToZoom(1);
-        }, 1000);
+        }, 50);
 
         var panZoom = svgPanZoom(svgEl, {
             maxZoom: 50,
             minZoom: 1,
-            onZoom: function(zoom) {
+            onZoom: function (zoom) {
                 adjustPathStrokeToZoom(zoom);
                 adjustCitiesToZoom(zoom);
             },
@@ -56,9 +56,9 @@ window.onload = function() {
         }
 
         function adjustCitiesToZoom(zoom) {
-            var radius = 3 / (0.5*zoom);
-            if (radius > 3) {
-                radius = 3;
+            var radius = 3 / (0.5 * zoom);
+            if (radius > 4) {
+                radius = 4;
             }
 
             for (var i = 0; i < cities.length; i++) {
@@ -85,25 +85,25 @@ window.onload = function() {
         }
 
         function animatePath() {
-            console.log(navigator.userAgent);
-            setTimeout(function () {
-                path.style["stroke-dashoffset"] = "0";
-            }, 50);
+            path.style["stroke-dashoffset"] = "0";
         }
 
         function addCitiesTooltips() {
             for (var i = 0; i < cities.length; i++) {
                 var city = cities[i];
-                city.addEventListener("mouseover", function(event) {
-                    console.log(event);
-                    tooltip.style.opacity = 1;
-                    tooltip.style.top = event.clientY + "px";
-                    tooltip.style.left = event.clientX + 30 + "px";
-                });
-                city.addEventListener("mouseout", function() {
-                    console.log("bye");
+                city.addEventListener("mouseover", bindMouseOver(city));
+                city.addEventListener("mouseout", function () {
                     tooltip.style.opacity = 0;
                 });
+            }
+
+            function bindMouseOver(city) {
+                return function (event) {
+                    tooltip.style.opacity = 1;
+                    tooltip.innerHTML = city.id.replace("_", " ");
+                    tooltip.style.top = event.clientY + "px";
+                    tooltip.style.left = event.clientX + 30 + "px";
+                };
             }
         }
     }

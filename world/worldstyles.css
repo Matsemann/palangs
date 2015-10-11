@@ -35,12 +35,12 @@
 /*}*/
 
 #cities circle {
-    fill: #f00;
+    fill: #cc6756;
+    transition: r 0.8s ease-in-out;
 }
 
 #cities circle:hover {
-    fill: #f00;
-
+    fill: #944a47;
 }
 
 #lakes path {
