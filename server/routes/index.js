@@ -10,42 +10,71 @@ router.get('/test', function (req, res) {
 });
 
 
-router.get('/team', function(req, res, next) {
+router.get('/team', function (req, res, next) {
+    runQuery('SELECT t.id as tid, t.name as tname, p.id as pid, p.name as pname ' +
+        'FROM team t ' +
+        'LEFT JOIN participant p ON t.id = p.teamid', null, success, err);
 
-    var results = [];
 
-    // Grab data from http request
-    //var data = {text: req.body.text, complete: false};
+    function success(result) {
+        var teams = [];
+        for (var i = 0; i < result.rows.length; i++) {
+            var row = result.rows[i];
 
-    // Get a Postgres client from the connection pool
-    pg.connect(connectionString, function(err, client, done) {
-        // Handle connection errors
-        if(err) {
-          done();
-          console.log(err);
-          return res.status(500).json({ success: false, data: err});
+            var team = getById(teams, row.tid);
+            if (!team) {
+                team = {
+                    id: row.tid,
+                    name: row.tname,
+                    participants: []
+                };
+                teams.push(team);
+            }
+
+            if (row.pid) {
+                team.participants.push({
+                    id: row.pid,
+                    name: row.pname
+                });
+            }
         }
 
-        // SQL Query > Insert Data
-        //client.query("INSERT INTO items(text, complete) values($1, $2)", [data.text, data.complete]);
+        res.json(teams);
 
-        // SQL Query > Select Data
-        var query = client.query('SELECT * FROM "team";');
+    }
 
-        // Stream results back one row at a time
-        query.on('row', function(row) {
-            results.push(row);
-        });
+    function err(error) {
+        return res.status(500).json({ error: "Something went wrong"});
+    }
 
-        // After all data is returned, close connection and return results
-        query.on('end', function() {
-            done();
-            res.json(results);
-        });
-
-
-    });
 });
+
+function getById(collection, id) {
+    for (var i = 0; i < collection.length; i++) {
+        if (collection[i].id == id) {
+            return collection[i];
+        }
+    }
+    return null;
+}
+
+function runQuery(query, values, callback, errCallback) {
+    pg.connect(connectionString, function (err, client, done) {
+        if (err) {
+            done();
+            errCallback(err);
+        }
+        client.query(query, values, function(err, result) {
+            done();
+
+            if (err) {
+                errCallback(err);
+            } else {
+                callback(result);
+            }
+        });
+    });
+}
 
 
 module.exports = router;
