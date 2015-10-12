@@ -17,7 +17,8 @@ Stacken er node+express+postgres backend og angularjs frontend.
 - [ ] Ikke vise dagens resultater før et visst klokkeslett (13:57 har vi hatt før)
 - [ ] Kartet skal vise hvor lagene er
  - [ ] På sikt animert fremgang per dag?
- - [ ] Fikse slik at det er responsivt
+ - [X] Fikse slik at det er responsivt
+- [ ] Grafer over hvor langt lag/deltakere har gått
 - [ ] Kompetansebygge ved å migrere til Angular 2.0
 - [ ] Sikkert mer
 

@@ -1,14 +1,14 @@
 angular.module('palangs')
-    .directive('map', function () {
+    .directive('map', function (totalDistance) {
         return {
             scope: {},
             templateUrl: "map/mapTemplate.html",
             controller: function ($scope) {
 
             },
-            link: function(scope, el, attrs) {
+            link: function (scope, el, attrs) {
                 var svgEl = document.querySelector("#map");
-                svgEl.addEventListener('load', function (){
+                svgEl.addEventListener('load', function () {
                     start(svgEl);
                 });
 
@@ -63,15 +63,13 @@ angular.module('palangs')
                     function beforePan(oldPan, newPan) {
                         var sizes = this.getSizes();
 
-                        var rightLimit = -((sizes.viewBox.width) * sizes.realZoom) + sizes.viewBox.width;
-                        var leftLimit = 0;
-
-                        var topLimit = 0;
-                        var bottomLimit = -(sizes.viewBox.height * sizes.realZoom) + sizes.viewBox.height;
+                        var limitX = sizes.width - ((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom);
+                        var limitY = sizes.height - ((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom);
 
                         var customPan = {};
-                        customPan.x = Math.max(rightLimit, Math.min(leftLimit, newPan.x));
-                        customPan.y = Math.max(bottomLimit, Math.min(topLimit, newPan.y));
+
+                        customPan.x = Math.max(limitX, Math.min(newPan.x, sizes.viewBox.x));
+                        customPan.y = Math.max(limitY, Math.min(newPan.y, sizes.viewBox.y));
 
                         return customPan;
                     }
