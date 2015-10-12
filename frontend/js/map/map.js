@@ -28,13 +28,27 @@ angular.module('palangs')
 
                     var panZoom = svgPanZoom(svgEl, {
                         maxZoom: 50,
-                        minZoom: 1,
                         onZoom: function (zoom) {
                             adjustPathStrokeToZoom(zoom);
                             adjustCitiesToZoom(zoom);
                         },
                         beforePan: beforePan
                     });
+                    resize();
+
+                    $(window).resize(function () {
+                        resize();
+                    });
+
+                    function resize() {
+                        // Let it zoom freely to fit the content, then set
+                        // that as the new min-zoom to avoid the user zooming more out
+                        panZoom.setMinZoom(0.01);
+                        panZoom.resize();
+                        panZoom.fit();
+                        panZoom.center();
+                        panZoom.setMinZoom(panZoom.getZoom());
+                    }
 
 
                     function adjustPathStrokeToZoom(zoom) {
