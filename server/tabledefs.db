@@ -1,3 +1,4 @@
+#DB named "palangs"
 CREATE TABLE team(id serial primary key, name varchar(200));
 create table participant(id serial primary key, teamid int, name varchar(200));
 create table distancelog(id serial primary key, participantid int, date varchar(10), meters int);                                      ;
