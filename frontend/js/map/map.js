@@ -1,5 +1,5 @@
 angular.module('palangs')
-    .directive('map', function (totalDistance) {
+    .directive('map', function (totalDistance, mapService, backendService, utilService) {
         return {
             scope: {},
             templateUrl: "map/mapTemplate.html",
@@ -8,116 +8,71 @@ angular.module('palangs')
             },
             link: function (scope, el, attrs) {
                 var svgEl = document.querySelector("#map");
-                svgEl.addEventListener('load', function () {
-                    start(svgEl);
-                });
+                svgEl.addEventListener('load', loaded);
 
-                el.on('$destroy', destroy);
+                var map;
+                var teamData;
 
-                function start(svgEl) {
-                    console.log("starting3");
-                    var svg = svgEl.contentDocument;
-                    var path = svg.querySelector("#path path");
-                    var cities = svg.querySelectorAll("#cities circle");
-                    var tooltip = document.querySelector("#tooltip");
 
-                    addCitiesTooltips();
-
-                    setTimeout(function () {
-                        animatePath();
-                        adjustCitiesToZoom(1);
-                    }, 50);
-
-                    var panZoom = svgPanZoom(svgEl, {
-                        maxZoom: 50,
-                        onZoom: function (zoom) {
-                            adjustPathStrokeToZoom(zoom);
-                            adjustCitiesToZoom(zoom);
-                        },
-                        beforePan: beforePan
-                    });
-                    resize();
-
+                function loaded() {
+                    map = mapService.createMap(svgEl);
                     $(window).on('resize.map', function () {
-                        resize();
+                        map.resize();
                     });
 
-                    function resize() {
-                        // Let it zoom freely to fit the content, then set
-                        // that as the new min-zoom to avoid the user zooming more out
-                        panZoom.setMinZoom(0.01);
-                        panZoom.resize();
-                        panZoom.fit();
-                        panZoom.center();
-                        panZoom.setMinZoom(panZoom.getZoom());
-                    }
-
-
-                    function adjustPathStrokeToZoom(zoom) {
-                        var strokeWidth = 3 / zoom;
-
-                        if (strokeWidth < 0.3) {
-                            strokeWidth = 0.3;
-                        }
-
-                        path.style.strokeWidth = strokeWidth;
-                    }
-
-                    function adjustCitiesToZoom(zoom) {
-                        var radius = 3 / (0.5 * zoom);
-                        if (radius > 4) {
-                            radius = 4;
-                        }
-
-                        for (var i = 0; i < cities.length; i++) {
-                            var city = cities[i];
-                            city.setAttribute("r", radius);
-                        }
-                    }
-
-
-                    function beforePan(oldPan, newPan) {
-                        var sizes = this.getSizes();
-
-                        var limitX = sizes.width - ((sizes.viewBox.x + sizes.viewBox.width) * sizes.realZoom);
-                        var limitY = sizes.height - ((sizes.viewBox.y + sizes.viewBox.height) * sizes.realZoom);
-
-                        var customPan = {};
-
-                        customPan.x = Math.max(limitX, Math.min(newPan.x, sizes.viewBox.x));
-                        customPan.y = Math.max(limitY, Math.min(newPan.y, sizes.viewBox.y));
-
-                        return customPan;
-                    }
-
-                    function animatePath() {
-                        path.style["stroke-dashoffset"] = "0";
-                    }
-
-                    function addCitiesTooltips() {
-                        for (var i = 0; i < cities.length; i++) {
-                            var city = cities[i];
-                            city.addEventListener("mouseover", bindMouseOver(city));
-                            city.addEventListener("mouseout", function () {
-                                tooltip.style.opacity = 0;
-                            });
-                        }
-
-                        function bindMouseOver(city) {
-                            return function (event) {
-                                tooltip.style.opacity = 1;
-                                tooltip.innerHTML = city.id.replace("_", " ");
-                                tooltip.style.top = event.clientY + "px";
-                                tooltip.style.left = event.clientX + 10 + "px";
-                            };
-                        }
-                    }
+                    backendService.getTeamStats().then(function (result) {
+                        teamData = result.data;
+                        addTeamsToMap();
+                        animateTeams();
+                    });
 
                 }
 
-                function destroy() {
+                function addTeamsToMap() {
+                    teamData.forEach(function (team) {
+                        map.addTeam(team.name);
+                    });
+                }
+
+                function animateTeams() {
+                    var dates = utilService.getDays();
+
+                    var stepsPerDay = 1;
+
+                    var accumuluatedLengths = {};
+                    teamData.forEach(function(team) {accumuluatedLengths[team.name] = 0})
+
+                    var step = 0;
+                    var day = 0;
+                    var interval = setInterval(function () {
+                        console.log("step:" + step + ", day:" + day);
+
+                        for (var i = 0; i < teamData.length; i++) {
+                            var team = teamData[i];
+                            var date = dates[day];
+
+                            accumuluatedLengths[team.name] += team.days[date] ? team.days[date] : 0;
+
+                            console.log("setting " + team.name + " to " + accumuluatedLengths[team.name]);
+                            map.setTeamDistance(team.name, accumuluatedLengths[team.name]);
+                        }
+
+                        step++;
+                        if (step == stepsPerDay) {
+                            step = 0;
+                            day++;
+                            if (day == dates.length) {
+                                clearInterval(interval);
+                            }
+                        }
+
+                    }, 500);
+
+                }
+
+                el.on('$destroy', function () {
                     $(window).off('resize.map');
-                }
+                });
 
             }
         };

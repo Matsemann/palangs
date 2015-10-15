@@ -165,6 +165,7 @@ function runQuery(query, values, callback, errCallback) {
         if (err) {
             done();
             errCallback(err);
+            return;
         }
         client.query(query, values, function (err, result) {
             done();

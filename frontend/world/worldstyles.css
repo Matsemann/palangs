@@ -18,7 +18,7 @@
     stroke-dasharray: 904, 904;
     stroke-dashoffset: 904;
 
-    transition: stroke-dashoffset 5s ease-in-out, stroke-width 0.5s ease-in-out, fill 0.3s ease-in-out;
+    transition: stroke-dashoffset 2s linear, stroke-width 0.5s ease-in-out, fill 0.3s ease-in-out;
 }
 
 #path path:hover {
@@ -45,4 +45,23 @@
 
 #lakes path {
     fill: #0a4e6f;
+}
+
+#teams circle:nth-child(5n+1) {
+    fill: #0f0;
+}
+#teams circle:nth-child(5n+2) {
+    fill: #00f;
+}
+
+#teams circle:nth-child(5n+3) {
+    fill: #0ff;
+}
+
+#teams circle:nth-child(5n+4) {
+    fill: #f0f;
+}
+
+#teams circle:nth-child(5n+5) {
+    fill: #fff;
 }
