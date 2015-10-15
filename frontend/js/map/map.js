@@ -12,6 +12,8 @@ angular.module('palangs')
                     start(svgEl);
                 });
 
+                el.on('$destroy', destroy);
+
                 function start(svgEl) {
                     console.log("starting3");
                     var svg = svgEl.contentDocument;
@@ -36,7 +38,7 @@ angular.module('palangs')
                     });
                     resize();
 
-                    $(window).resize(function () {
+                    $(window).on('resize.map', function () {
                         resize();
                     });
 
@@ -110,6 +112,11 @@ angular.module('palangs')
                             };
                         }
                     }
+
+                }
+
+                function destroy() {
+                    $(window).off('resize.map');
                 }
 
             }
