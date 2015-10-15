@@ -37,7 +37,7 @@ angular.module('palangs')
                 function animateTeams() {
                     var dates = utilService.getDays();
 
-                    var stepsPerDay = 1;
+                    var stepsPerDay = 15;
 
                     var accumuluatedLengths = {};
                     teamData.forEach(function(team) {accumuluatedLengths[team.name] = 0})
@@ -45,13 +45,11 @@ angular.module('palangs')
                     var step = 0;
                     var day = 0;
                     var interval = setInterval(function () {
-                        console.log("step:" + step + ", day:" + day);
-
                         for (var i = 0; i < teamData.length; i++) {
                             var team = teamData[i];
                             var date = dates[day];
 
-                            accumuluatedLengths[team.name] += team.days[date] ? team.days[date] : 0;
+                            accumuluatedLengths[team.name] += team.days[date] ? team.days[date] / stepsPerDay : 0;
 
                             console.log("setting " + team.name + " to " + accumuluatedLengths[team.name]);
                             map.setTeamDistance(team.name, accumuluatedLengths[team.name]);
@@ -66,7 +64,7 @@ angular.module('palangs')
                             }
                         }
 
-                    }, 500);
+                    }, 25);
 
                 }
 
