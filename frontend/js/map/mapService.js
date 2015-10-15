@@ -31,7 +31,7 @@ angular.module('palangs')
                 },
                 beforePan: function (oldPan, newPan) {
                     var sizes = this.getSizes(); // "this" is panzoom context
-                    self.limitPan(newPan, sizes);
+                    return self.limitPan(newPan, sizes);
                 }
             });
         };
