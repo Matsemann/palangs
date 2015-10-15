@@ -14,6 +14,7 @@ angular.module('palangs')
 
 
                 var lagretData = [];
+                var participantData;
                 backendService.getParticipantsStats().then(function (result) {
                     lagretData = result.data;
                 });
@@ -25,7 +26,6 @@ angular.module('palangs')
                         return;
                     }
 
-                    var participantData;
                     for (var i = 0; i < lagretData.length; i++) {
                         var d = lagretData[i];
                         if (d.id == newValue.participant.id) {
@@ -49,6 +49,7 @@ angular.module('palangs')
 
                 $scope.save = function() {
                     $scope.saveText = "Lagrer...";
+                    participantData.days[$scope.selected.date] = $scope.distanceM;
                     backendService.saveDistance($scope.selected.participant.id, {
                         date: $scope.selected.date,
                         distance: $scope.distanceM

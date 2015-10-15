@@ -11,7 +11,7 @@ angular.module('palangs')
                 var yesterday = new Date();
                 yesterday.setDate(yesterday.getDate() - 1);
 
-                $scope.selected.date = yesterday.toISOString().slice(0, 10);
+                $scope.selected.date = utilService.dateToString(yesterday);
                 $scope.selected.team = null;
                 $scope.selected.participant = null;
 
