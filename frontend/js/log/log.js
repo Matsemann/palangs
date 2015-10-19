@@ -26,6 +26,7 @@ angular.module('palangs')
                         return;
                     }
 
+                    participantData = null;
                     for (var i = 0; i < lagretData.length; i++) {
                         var d = lagretData[i];
                         if (d.id == newValue.participant.id) {
