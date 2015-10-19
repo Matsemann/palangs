@@ -18,7 +18,7 @@
     stroke-dasharray: 904, 904;
     stroke-dashoffset: 904;
 
-    transition: stroke-dashoffset 2s linear, stroke-width 0.5s ease-in-out, fill 0.3s ease-in-out;
+    transition: stroke-dashoffset 1.5s linear, stroke-width 0.5s ease-in-out, fill 0.3s ease-in-out;
 }
 
 #path path:hover {
@@ -35,23 +35,33 @@
 /*}*/
 
 #cities circle {
-    fill: #cc6756;
-    transition: r 0.8s ease-in-out;
+    fill: #004769;
+    stroke: #cecece;
+    stroke-width: 0.5;
+
+    transition: r 0.3s linear;
 }
 
 #cities circle:hover {
-    fill: #944a47;
+    fill: #002846;
 }
 
 #lakes path {
     fill: #0a4e6f;
 }
 
+#teams circle {
+    stroke: #cecece;
+    stroke-width: 0.7;
+
+    transition: r 0.3s linear;
+}
+
 #teams circle:nth-child(5n+1) {
-    fill: #0f0;
+    fill: #54BF54;
 }
 #teams circle:nth-child(5n+2) {
-    fill: #00f;
+    fill: #943A3A;
 }
 
 #teams circle:nth-child(5n+3) {

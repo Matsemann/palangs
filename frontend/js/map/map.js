@@ -1,5 +1,5 @@
 angular.module('palangs')
-    .directive('map', function (totalDistance, mapService, backendService, utilService) {
+    .directive('map', function (totalDistance, mapService, backendService, utilService, $timeout) {
         return {
             scope: {},
             templateUrl: "map/mapTemplate.html",
@@ -23,7 +23,9 @@ angular.module('palangs')
                     backendService.getTeamStats().then(function (result) {
                         teamData = result.data;
                         addTeamsToMap();
-                        animateTeams();
+                        $timeout(function () {
+                            animateTeams();
+                        }, 2000);
                     });
 
                 }
@@ -40,7 +42,9 @@ angular.module('palangs')
                     var stepsPerDay = 15;
 
                     var accumuluatedLengths = {};
-                    teamData.forEach(function(team) {accumuluatedLengths[team.name] = 0})
+                    teamData.forEach(function (team) {
+                        accumuluatedLengths[team.name] = 0
+                    });
 
                     var step = 0;
                     var day = 0;

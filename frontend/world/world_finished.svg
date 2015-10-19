@@ -742,8 +742,80 @@
 		c0.522,0.232,1.193,0.992,1.534,1.412c-0.296,0.09-0.099,0.26,0.141,0.397c-0.029-0.009-0.057-0.019-0.087-0.028"/>
 </g>
 <g id="cities">
-	<circle id="Noe_annet" class="st4" cx="197.923" cy="217.981" r="1.206"/>
-	<circle id="Moskva" class="st4" cx="213.122" cy="241.751" r="1.206"/>
+	<circle id="Kiev" cx="186.119" cy="282.674" r="1.206"/>
+	<circle id="Tashkent" cx="407.278" cy="344.642" r="1.206"/>
+	<circle id="London" cx="29.365" cy="276.387" r="1.206"/>
+	<circle id="Ankara" cx="211.187" cy="361.57" r="1.206"/>
+	<circle id="Budapest" cx="130.024" cy="305.787" r="1.206"/>
+	<circle id="Madrid" cx="9.68" cy="359.779" r="1.206"/>
+	<circle id="Bucuresti" cx="169.841" cy="328.296" r="1.206"/>
+	<circle id="Stockholm" cx="114.926" cy="216.775" r="1.206"/>
+	<circle id="Tromsø" cx="107.518" cy="139.517" r="1.206"/>
+	<circle id="Trondheim" cx="76.551" cy="186.652" r="1.206"/>
+	<circle id="Bergen" cx="54.686" cy="209.534" r="1.206"/>
+	<circle id="Oslo" cx="80.128" cy="212.921" r="1.206"/>
+	<circle id="Ljubljana" cx="106.92" cy="316.942" r="1.206"/>
+	<circle id="Bratislava" cx="119.285" cy="301.043" r="1.206"/>
+	<circle id="Amsterdam" cx="54.739" cy="269.954" r="1.206"/>
+	<circle id="Chisinau" cx="181.759" cy="308.677" r="1.206"/>
+	<circle id="Murmansk" cx="166.313" cy="143.26" r="1.206"/>
+	<circle id="St._Petersburg" cx="171.162" cy="211.243" r="1.206"/>
+	<circle id="Petrozavodsk" cx="185.949" cy="196.438" r="1.206"/>
+	<circle id="Nizjnij_Novgorod" cx="242.67" cy="236.389" r="1.206"/>
+	<circle id="Vologda" cx="217.191" cy="215.453" r="1.206"/>
+	<circle id="Moskva_1_" cx="213.07" cy="241.751" r="1.206"/>
+	<circle id="Rostov-na-Donu" cx="238.26" cy="305.574" r="1.206"/>
+	<circle id="Tsjeljabinsk" cx="322.546" cy="255.32" r="1.206"/>
+	<circle id="Kirov" cx="264.106" cy="218.437" r="1.206"/>
+	<circle id="Jekaterinburg" cx="320.322" cy="229.152" r="1.206"/>
+	<circle id="Samara" cx="279.708" cy="258.88" r="1.206"/>
+	<circle id="Kazan" cx="268.646" cy="239.854" r="1.206"/>
+	<circle id="Omsk" cx="387.22" cy="239.765" r="1.206"/>
+	<circle id="Tjumen" cx="342.586" cy="225.778" r="1.206"/>
+	<circle id="Kemerovo" cx="445.786" cy="233.108" r="1.206"/>
+	<circle id="Novosibirisk" cx="432.366" cy="236.488" r="1.206"/>
+	<circle id="Seoul" cx="728.614" cy="352.555" r="1.206"/>
+	<circle id="Bratsk" cx="513.506" cy="221.044" r="1.206"/>
+	<circle id="Irkutsk" cx="545.151" cy="248.802" r="1.206"/>
+	<circle id="Krasnojarsk" cx="474.197" cy="225.582" r="1.206"/>
+	<circle id="Ulan-Ude" cx="563.603" cy="251.057" r="1.206"/>
+	<circle id="Bukachacha" cx="600.692" cy="237.872" r="1.206"/>
+	<circle id="Tsjita" cx="589.848" cy="246.589" r="1.206"/>
+	<circle id="Ust_Nera" cx="626.604" cy="139.256" r="1.206"/>
+	<circle id="Jakutsk" cx="595.898" cy="164.442" r="1.206"/>
+	<circle id="Aldan" cx="602.798" cy="191.622" r="1.206"/>
+	<circle id="Magadan" cx="697.67" cy="169.514" r="1.206"/>
+	<circle id="Warszawa" cx="135.825" cy="269.926" r="1.206"/>
+	<circle id="Perm" cx="296.446" cy="221.508" r="1.206"/>
+	<circle id="Pyongyang" cx="715.59" cy="341.599" r="1.206"/>
+	<circle id="Ulan_Bator" cx="579.082" cy="281.17" r="1.206"/>
+	<circle id="Bern" cx="69.312" cy="310.744" r="1.206"/>
+	<circle id="Roma" cx="98.036" cy="348.296" r="1.206"/>
+	<circle id="Vilnius" cx="154.7" cy="251.27" r="1.206"/>
+	<circle id="Riga" cx="146.046" cy="234.349" r="1.206"/>
+	<circle id="Bishkek" cx="431.526" cy="331.335" r="1.206"/>
+	<circle id="Beijing" cx="662.59" cy="338.931" r="1.206"/>
+	<circle id="Zagreb" cx="114.944" cy="318.781" r="1.206"/>
+	<circle id="Praha" cx="104.285" cy="286.647" r="1.206"/>
+	<circle id="Berlin" cx="97.385" cy="268.373" r="1.206"/>
+	<circle id="Tallinn" cx="145.89" cy="215.631" r="1.206"/>
+	<circle id="Tokyo" cx="804.582" cy="360.913" r="1.206"/>
+	<circle id="Paris" cx="42.069" cy="296.166" r="1.206"/>
+	<circle id="Skopje" cx="146.742" cy="347.012" r="1.206"/>
+	<circle id="Tbilisi" cx="273.989" cy="346.417" r="1.206"/>
+	<circle id="Helsinki" cx="145.852" cy="210.027" r="1.206"/>
+	<circle id="Astana" cx="390.598" cy="269.072" r="1.206"/>
+	<circle id="København" cx="91.309" cy="244.688" r="1.206"/>
+	<circle id="Beograd" cx="139.399" cy="325.859" r="1.206"/>
+	<circle id="Tirana" cx="138.411" cy="352.186" r="1.206"/>
+	<circle id="Brussel" cx="52.09" cy="281.362" r="1.206"/>
+	<circle id="Yerevan" cx="274.823" cy="358.14" r="1.206"/>
+	<circle id="Baku" cx="303.742" cy="355.66" r="1.206"/>
+	<circle id="Sofia" cx="156.421" cy="341.71" r="1.206"/>
+	<circle id="Wien" cx="115.328" cy="300.698" r="1.206"/>
+	<circle id="Minsk" cx="166.765" cy="256.92" r="1.206"/>
+	<circle id="Sarajevo" cx="128.929" cy="333.302" r="1.206"/>
+	<circle id="Kirkenes" cx="151.02" cy="137.924" r="1.206"/>
 </g>
 <g id="teams">
 </g>

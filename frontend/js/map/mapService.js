@@ -87,7 +87,7 @@ angular.module('palangs')
 
             for (var i = 0; i < this.cities.length; i++) {
                 var city = this.cities[i];
-                city.setAttribute("r", radius);
+                city.setAttribute("r", radius * 0.8);
             }
             for (var teamName in this.teams) {
                 this.teams[teamName].el.setAttribute("r", radius);
