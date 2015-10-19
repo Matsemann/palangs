@@ -116,8 +116,6 @@ angular.module('palangs')
                 distance: 0
             };
 
-            el.setAttribute("cx", "50"); // todo start pos
-            el.setAttribute("cy", "50");
             el.setAttribute("r", "5");
             this.svg.querySelector("#teams").appendChild(el);
 
@@ -150,9 +148,6 @@ angular.module('palangs')
 
             team.el.setAttribute("cx", mapPosition.x);
             team.el.setAttribute("cy", mapPosition.y);
-            //
-            //    var pathLength = path.getTotalLength();
-            //    var xy = path.getPointAtLength(dst / totalDistance * pathLength);
         };
         return {
             createMap: function (svgElement) {

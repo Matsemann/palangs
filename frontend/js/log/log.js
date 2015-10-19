@@ -34,7 +34,17 @@ angular.module('palangs')
                         }
                     }
 
-                    $scope.distanceM = participantData.days[newValue.date] ? participantData.days[newValue.date] : "0";
+                    var distanceForDay;
+                    if (participantData) {
+                        distanceForDay = participantData.days[newValue.date] ? participantData.days[newValue.date] : "0";
+                    } else {
+                        participantData = {
+                            days: {}
+                        };
+                        distanceForDay = "0;"
+                    }
+
+                    $scope.distanceM = distanceForDay;
                     $scope.updateM();
                 }, true);
 

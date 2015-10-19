@@ -50,8 +50,6 @@ angular.module('palangs')
                             var date = dates[day];
 
                             accumuluatedLengths[team.name] += team.days[date] ? team.days[date] / stepsPerDay : 0;
-
-                            console.log("setting " + team.name + " to " + accumuluatedLengths[team.name]);
                             map.setTeamDistance(team.name, accumuluatedLengths[team.name]);
                         }
 
