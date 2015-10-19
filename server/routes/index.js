@@ -66,8 +66,7 @@ router.get('/distance/participants', function (req, res, next) {
 
             participant.totalDistance += row.meters;
 
-            var date = new Date(row.date).toISOString().slice(0, 10);
-            participant.days[date] = row.meters;
+            participant.days[row.date] = row.meters;
         }
 
         res.json(participants);
@@ -105,8 +104,7 @@ router.get('/distance/teams', function (req, res, next) {
             var totalDistance = parseInt(row.daytotal, 10);
             team.totalDistance += totalDistance;
 
-            var date = new Date(row.date).toISOString().slice(0, 10);
-            team.days[date] = totalDistance;
+            team.days[row.date] = totalDistance;
         }
 
         res.json(teams);

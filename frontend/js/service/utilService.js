@@ -18,7 +18,7 @@ angular.module('palangs')
         function getDays() {
             var dateParts = startDate.split('-');
             var current = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-            var today = new Date(new Date().toISOString().slice(0, 10));
+            var today = new Date(dateToString(new Date()));
 
             var days = [];
 
