@@ -51,11 +51,11 @@ angular.module('palangs')
 
                 $scope.updateM = function() {
                     $scope.distanceM = parseInt($scope.distanceM, 10);
-                    $scope.distanceS = Math.floor($scope.distanceM * 1.3);
+                    $scope.distanceS = Math.floor($scope.distanceM * 1.33);
                 };
 
                 $scope.updateS = function() {
-                    $scope.distanceM = Math.floor($scope.distanceS / 1.3);
+                    $scope.distanceM = Math.floor($scope.distanceS / 1.33);
                 };
 
                 $scope.save = function() {
