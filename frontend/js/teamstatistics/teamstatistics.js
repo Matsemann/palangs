@@ -17,7 +17,11 @@ angular.module('palangs')
                 };
 
                 $scope.toKm = function(distance) {
-                    return (distance/1000).toFixed(2);
+                    if (distance) {
+                        return (distance/1000).toFixed(2) + " km";
+                    } else {
+                        return "-";
+                    }
                 };
             }
         };

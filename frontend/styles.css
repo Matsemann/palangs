@@ -37,6 +37,7 @@
     overflow-y: auto;
 }
 
-/*#tooltip:hover {*/
-    /*opacity: 1;*/
-/*}*/
+.distance {
+    text-align: right;
+    white-space: nowrap;
+}
