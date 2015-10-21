@@ -31,9 +31,18 @@ angular.module('palangs')
             return days;
         }
 
+        function toKm(distance) {
+            if (distance) {
+                return (distance/1000).toFixed(2) + " km";
+            } else {
+                return "-";
+            }
+        }
+
         return {
             getDays: getDays,
-            dateToString: dateToString
+            dateToString: dateToString,
+            toKm: toKm
         }
     })
 ;

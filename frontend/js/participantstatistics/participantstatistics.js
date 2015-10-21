@@ -11,14 +11,7 @@ angular.module('palangs')
                 });
 
                 $scope.days = utilService.getDays();
-
-                $scope.toKm = function(distance) {
-                    if (distance) {
-                        return (distance/1000).toFixed(2) + " km";
-                    } else {
-                        return "-";
-                    }
-                };
+                $scope.toKm = utilService.toKm;
             }
         };
     });

@@ -16,13 +16,7 @@ angular.module('palangs')
                     return ((distance/1000) / totalDistance * 100).toFixed(2);
                 };
 
-                $scope.toKm = function(distance) {
-                    if (distance) {
-                        return (distance/1000).toFixed(2) + " km";
-                    } else {
-                        return "-";
-                    }
-                };
+                $scope.toKm = utilService.toKm;
             }
         };
     });

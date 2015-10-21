@@ -41,3 +41,7 @@
     text-align: right;
     white-space: nowrap;
 }
+
+.no-break {
+    white-space: nowrap;
+}
