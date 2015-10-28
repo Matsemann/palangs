@@ -36,7 +36,7 @@ angular.module('palangs')
 
                 function calculateBekkTotal() {
                     var bekkTeam = {
-                        name: 'BEKK total',
+                        name: 'Alle lag totalt',
                         days: {}
                     };
 

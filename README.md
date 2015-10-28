@@ -16,7 +16,7 @@ Stacken er node+express+postgres backend og angularjs frontend.
 
 - [ ] Grafer over hvor langt lag/deltakere har gått TOP PRI
 - [ ] Validere input, men stoler på brukerne
-- [ ] Vise "BEKK Totalt" på kartet
+- [X] Vise "BEKK Totalt" på kartet
 - [ ] Sticky headers eller annet opplegg for lettere navigering nå som tabellen er blitt stor
 - [X] Kartet skal vise hvor lagene er
  - [X] På sikt animert fremgang per dag?
