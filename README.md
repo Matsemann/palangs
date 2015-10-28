@@ -14,11 +14,17 @@ Stacken er node+express+postgres backend og angularjs frontend.
 
 ## TODO
 
-- [ ] Ikke vise dagens resultater før et visst klokkeslett (13:57 har vi hatt før)
-- [ ] Kartet skal vise hvor lagene er
- - [ ] På sikt animert fremgang per dag?
+- [ ] Grafer over hvor langt lag/deltakere har gått TOP PRI
+- [ ] Validere input, men stoler på brukerne
+- [ ] Vise "BEKK Totalt" på kartet
+- [ ] Sticky headers eller annet opplegg for lettere navigering nå som tabellen er blitt stor
+- [X] Kartet skal vise hvor lagene er
+ - [X] På sikt animert fremgang per dag?
  - [X] Fikse slik at det er responsivt
-- [ ] Grafer over hvor langt lag/deltakere har gått
+
+Lavere prio:
+
+- [ ] Ikke vise dagens resultater før et visst klokkeslett? (13:57 har vi hatt før)
 - [ ] Kompetansebygge ved å migrere til Angular 2.0
-- [ ] Sikkert mer
+- [ ] Andre forslag?
 
