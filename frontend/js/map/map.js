@@ -13,6 +13,7 @@ angular.module('palangs')
                 var map;
                 var teamData;
 
+                var dates = utilService.getDays();
 
                 function loaded() {
                     map = mapService.createMap(svgEl);
@@ -22,12 +23,32 @@ angular.module('palangs')
 
                     backendService.getTeamStats().then(function (result) {
                         teamData = result.data;
+                        var bekkTeam = calculateBekkTotal();
+                        teamData.push(bekkTeam);
+
                         addTeamsToMap();
                         $timeout(function () {
                             animateTeams();
                         }, 2000);
                     });
 
+                }
+
+                function calculateBekkTotal() {
+                    var bekkTeam = {
+                        name: 'BEKK total',
+                        days: {}
+                    };
+
+                    dates.forEach(function (day) {
+                        bekkTeam.days[day] = teamData.map(function (team) {
+                            return team.days[day] || 0;
+                        }).reduce(function (a, b) {
+                            return a+b;
+                        });
+                    });
+
+                    return bekkTeam;
                 }
 
                 function addTeamsToMap() {
@@ -37,7 +58,6 @@ angular.module('palangs')
                 }
 
                 function animateTeams() {
-                    var dates = utilService.getDays();
 
                     var stepsPerDay = 15;
 
